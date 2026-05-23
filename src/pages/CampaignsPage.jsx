@@ -47,7 +47,7 @@ export function CampaignsPage() {
   };
 
   return (
-    <div className="page-content" style={{ overflow: 'auto', padding: 32 }}>
+    <div className="page-scroll">
       <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-start', gap: 16, marginBottom: 24 }}>
         <div>
           <h1 style={{ margin: '0 0 8px', fontSize: 28, fontWeight: 600, color: 'var(--ink)' }}>AI Marketing Campaigns</h1>
@@ -96,7 +96,7 @@ export function CampaignsPage() {
         ))}
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'minmax(280px, 380px) 1fr', gap: 24, alignItems: 'start' }}>
+      <div className="campaigns-split">
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
           {filtered.map((c) => (
             <CampaignCard

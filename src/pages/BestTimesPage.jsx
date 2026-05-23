@@ -26,7 +26,7 @@ export function BestTimesPage() {
   }, []);
 
   return (
-    <div className="page-content" style={{ overflow: 'auto', padding: 32 }}>
+    <div className="page-scroll">
       <div style={{ marginBottom: 24 }}>
         <h1 style={{ margin: '0 0 8px', fontSize: 28, fontWeight: 600, color: 'var(--ink)' }}>Best Time to Post</h1>
         <p style={{ margin: 0, color: 'var(--ink-mute)', fontSize: 15 }}>

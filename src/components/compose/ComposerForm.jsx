@@ -86,16 +86,7 @@ export function ComposerForm({
   };
 
   return (
-    <div
-      style={{
-        flex: '1 1 55%',
-        minWidth: 360,
-        overflowY: 'auto',
-        padding: 32,
-        background: 'var(--canvas)',
-        borderRight: '1px solid var(--hairline)',
-      }}
-    >
+    <div className="compose-form">
       <h1 style={{ margin: '0 0 24px', fontSize: 22, fontWeight: 600, color: 'var(--ink)' }}>
         {initialPost ? 'Edit Post' : 'New Post'}
       </h1>

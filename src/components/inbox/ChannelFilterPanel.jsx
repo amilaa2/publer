@@ -1,6 +1,7 @@
 import { Badge } from '../shared/Badge';
 import { INBOX_COUNTS, INBOX_LABELS } from '../../demo/inboxDemoData';
 import { useInboxStore } from '../../stores/useInboxStore';
+import { useUIStore } from '../../stores/useUIStore';
 import { getChannelColor, PLATFORM_SHORT } from '../../utils/platformUtils';
 
 const CHANNELS = [
@@ -16,20 +17,29 @@ const CHANNELS = [
 export function ChannelFilterPanel() {
   const activeChannel = useInboxStore((s) => s.activeChannel);
   const setChannel = useInboxStore((s) => s.setChannel);
+  const setInboxMobileView = useUIStore((s) => s.setInboxMobileView);
+
+  const pickChannel = (id) => {
+    setChannel(id);
+    if (window.matchMedia('(max-width: 768px)').matches) {
+      setInboxMobileView('list');
+    }
+  };
 
   return (
-    <aside
-      style={{
-        width: 200,
-        background: 'var(--primary)',
-        flexShrink: 0,
-        display: 'flex',
-        flexDirection: 'column',
-        borderRight: '1px solid var(--hairline-dark)',
-        overflowY: 'auto',
-      }}
-    >
-      <div style={{ padding: '16px 12px 8px' }}>
+    <aside className="inbox-filters">
+      <div className="inbox-filters-top">
+        <span className="inbox-filters-title">Channels</span>
+        <button
+          type="button"
+          className="inbox-filters-close"
+          onClick={() => setInboxMobileView('list')}
+          aria-label="Close filters"
+        >
+          ×
+        </button>
+      </div>
+      <div style={{ padding: '8px 12px 8px' }}>
         <p
           style={{
             fontSize: 10,
@@ -48,7 +58,7 @@ export function ChannelFilterPanel() {
             <button
               key={ch.id}
               type="button"
-              onClick={() => setChannel(ch.id)}
+              onClick={() => pickChannel(ch.id)}
               style={{
                 width: '100%',
                 display: 'flex',

@@ -1,7 +1,7 @@
 export function LoginPage() {
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--primary)' }}>
-      <div style={{ background: 'var(--canvas)', borderRadius: 12, padding: 40, width: 360, boxShadow: 'var(--shadow-3)' }}>
+    <div className="login-page">
+      <div className="login-card">
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 24 }}>
           <div style={{ width: 36, height: 36, borderRadius: 8, background: 'var(--teal-brand)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>📬</div>
           <span style={{ fontWeight: 700, fontSize: 18 }}>Publer</span>

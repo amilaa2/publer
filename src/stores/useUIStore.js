@@ -7,6 +7,13 @@ export const useUIStore = create((set) => ({
   activeModal: null,
   modalProps: {},
   isSidebarCollapsed: false,
+  mobileMenuOpen: false,
+  inboxMobileView: 'list',
+  composeMobileTab: 'edit',
+
+  setMobileMenuOpen: (open) => set({ mobileMenuOpen: open }),
+  setInboxMobileView: (view) => set({ inboxMobileView: view }),
+  setComposeMobileTab: (tab) => set({ composeMobileTab: tab }),
 
   addToast: (toast) => {
     const id = ++toastId;

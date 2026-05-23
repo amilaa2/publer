@@ -48,12 +48,10 @@ export function CreateCampaignModal({ open, onClose, onCreate, onGenerateAi, aiG
   };
 
   return (
-    <div
-      style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.55)', zIndex: 8000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24 }}
-      onClick={onClose}
-    >
+    <div className="modal-overlay" onClick={onClose}>
       <div
-        style={{ position: 'relative', background: 'var(--canvas)', borderRadius: 16, maxWidth: 560, width: '100%', maxHeight: '90vh', overflow: 'auto', padding: 28, color: 'var(--ink)' }}
+        className="modal-panel"
+        style={{ position: 'relative', color: 'var(--ink)' }}
         onClick={(e) => e.stopPropagation()}
       >
         <button type="button" onClick={onClose} style={{ position: 'absolute', top: 16, right: 16, background: 'var(--canvas-soft)', border: '1px solid var(--hairline)', borderRadius: 6, width: 32, height: 32, cursor: 'pointer' }}>×</button>

@@ -4,6 +4,7 @@ import { Avatar } from '../shared/Avatar';
 import { NavIcon } from '../shared/NavIcon';
 import { INBOX_COUNTS } from '../../demo/inboxDemoData';
 import { useAccountsStore } from '../../stores/useAccountsStore';
+import { useUIStore } from '../../stores/useUIStore';
 import { getChannelColor } from '../../utils/platformUtils';
 
 const NAV_ITEMS = [
@@ -17,28 +18,22 @@ const NAV_ITEMS = [
   { id: 'settings', label: 'Settings', route: '/settings' },
 ];
 
-export function LeftSidebar() {
+export function LeftSidebar({ variant = 'desktop' }) {
   const accounts = useAccountsStore((s) => s.accounts);
   const filterByAccount = useAccountsStore((s) => s.filterByAccount);
   const selectedAccountIds = useAccountsStore((s) => s.selectedAccountIds);
+  const setMobileMenuOpen = useUIStore((s) => s.setMobileMenuOpen);
+
+  const closeMenu = () => setMobileMenuOpen(false);
 
   return (
-    <aside
-      style={{
-        width: 220,
-        background: 'var(--primary)',
-        flexShrink: 0,
-        display: 'flex',
-        flexDirection: 'column',
-        borderRight: '1px solid var(--hairline-dark)',
-        overflowY: 'auto',
-      }}
-    >
+    <aside className={variant === 'drawer' ? 'sidebar-drawer' : 'sidebar-desktop'}>
       <nav style={{ padding: '12px 10px', flex: 1 }}>
         {NAV_ITEMS.map((item) => (
           <NavLink
             key={item.id}
             to={item.route}
+            onClick={closeMenu}
             className={({ isActive }) =>
               [
                 'sidebar-nav-link',
@@ -58,17 +53,7 @@ export function LeftSidebar() {
       </nav>
 
       <div style={{ padding: '12px', borderTop: '1px solid var(--hairline-dark)' }}>
-        <p
-          style={{
-            fontSize: 10,
-            fontWeight: 700,
-            letterSpacing: '0.8px',
-            color: 'var(--on-dark-faint)',
-            margin: '0 0 8px 8px',
-          }}
-        >
-          ACCOUNTS
-        </p>
+        <p className="sidebar-section-label">ACCOUNTS</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
           {accounts.filter((a) => a.connected).map((acc) => {
             const selected = selectedAccountIds.includes(acc.id);

@@ -4,6 +4,7 @@ import { ComposerForm } from '../components/compose/ComposerForm';
 import { PreviewPane } from '../components/compose/PreviewPane';
 import { usePostsStore } from '../stores/usePostsStore';
 import { useAccountsStore } from '../stores/useAccountsStore';
+import { useUIStore } from '../stores/useUIStore';
 
 const DEFAULT_MEDIA = [
   { id: 'm1', url: 'https://picsum.photos/seed/post1/800/800', thumbnailUrl: 'https://picsum.photos/seed/post1/200/200', type: 'image' },
@@ -13,6 +14,8 @@ export function ComposePage() {
   const { postId } = useParams();
   const posts = usePostsStore((s) => s.posts);
   const allAccounts = useAccountsStore((s) => s.accounts);
+  const composeMobileTab = useUIStore((s) => s.composeMobileTab);
+  const setComposeMobileTab = useUIStore((s) => s.setComposeMobileTab);
   const accounts = useMemo(
     () => allAccounts.filter((a) => a.connected),
     [allAccounts]
@@ -39,7 +42,6 @@ export function ComposePage() {
     [accounts, selectedAccountIds]
   );
 
-  // Derive active preview platform (no useEffect — avoids update loops)
   const activePreviewPlatform = useMemo(() => {
     if (selectedPlatforms.includes(previewPlatform)) return previewPlatform;
     return selectedPlatforms[0] ?? 'instagram';
@@ -48,10 +50,23 @@ export function ComposePage() {
   const previewPlatforms = selectedPlatforms.length ? selectedPlatforms : ['instagram'];
 
   return (
-    <div
-      key={postId ?? 'new'}
-      style={{ display: 'flex', flex: 1, overflow: 'hidden', height: '100%', minHeight: 0 }}
-    >
+    <div className={`compose-layout compose-tab-${composeMobileTab}`}>
+      <div className="compose-mobile-tabs">
+        <button
+          type="button"
+          className={composeMobileTab === 'edit' ? 'active' : ''}
+          onClick={() => setComposeMobileTab('edit')}
+        >
+          Edit
+        </button>
+        <button
+          type="button"
+          className={composeMobileTab === 'preview' ? 'active' : ''}
+          onClick={() => setComposeMobileTab('preview')}
+        >
+          Preview
+        </button>
+      </div>
       <ComposerForm
         key={postId ?? 'new'}
         initialPost={initialPost}

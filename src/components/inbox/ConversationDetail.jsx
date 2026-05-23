@@ -14,29 +14,29 @@ export function ConversationDetail() {
   const toggleStar = useInboxStore((s) => s.toggleStar);
   const archiveMessage = useInboxStore((s) => s.archiveMessage);
   const addToast = useUIStore((s) => s.addToast);
+  const setInboxMobileView = useUIStore((s) => s.setInboxMobileView);
 
   const selected = messages.find((m) => m.id === selectedMessageId);
 
   if (!selected) {
     return (
-      <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--ink-faint)', background: 'var(--canvas)' }}>
+      <div className="inbox-detail inbox-detail-empty">
         Select a conversation
       </div>
     );
   }
 
   return (
-    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', background: 'var(--canvas)', minWidth: 0, overflow: 'hidden' }}>
-      <div
-        style={{
-          padding: '16px 24px',
-          borderBottom: '1px solid var(--hairline)',
-          display: 'flex',
-          alignItems: 'flex-start',
-          justifyContent: 'space-between',
-          flexShrink: 0,
-        }}
-      >
+    <div className="inbox-detail">
+      <div className="inbox-detail-header">
+        <button
+          type="button"
+          className="inbox-back-btn"
+          onClick={() => setInboxMobileView('list')}
+          aria-label="Back to conversations"
+        >
+          ←
+        </button>
         <div style={{ flex: 1, minWidth: 0 }}>
           <h1 style={{ margin: '0 0 6px', fontSize: 18, fontWeight: 600, letterSpacing: '-0.4px' }}>{selected.subject}</h1>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
@@ -48,7 +48,7 @@ export function ConversationDetail() {
             ))}
           </div>
         </div>
-        <div style={{ display: 'flex', gap: 8, flexShrink: 0, marginLeft: 16 }}>
+        <div className="inbox-detail-actions">
           <button type="button" onClick={() => toggleStar(selected.id)} style={{ background: 'none', border: '1px solid var(--hairline)', borderRadius: 6, padding: '6px 10px', cursor: 'pointer' }}>
             {selected.starred ? '⭐' : '☆'}
           </button>

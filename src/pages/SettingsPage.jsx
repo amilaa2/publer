@@ -4,7 +4,7 @@ import { getChannelColor, PLATFORM_LABELS, PLATFORM_SHORT } from '../utils/platf
 
 export function SettingsPage() {
   return (
-    <div className="page-content" style={{ overflow: 'auto', padding: 32 }}>
+    <div className="page-scroll">
       <h1 style={{ margin: '0 0 8px', fontSize: 22, color: 'var(--ink)' }}>Settings</h1>
       <p style={{ color: 'var(--ink-mute)', marginBottom: 32 }}>Connected accounts, team, and billing</p>
 

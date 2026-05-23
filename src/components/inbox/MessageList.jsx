@@ -3,6 +3,7 @@ import { ChannelDot } from '../shared/ChannelDot';
 import { LabelPill } from '../shared/LabelPill';
 import { EmptyState } from '../shared/EmptyState';
 import { useInboxStore } from '../../stores/useInboxStore';
+import { useUIStore } from '../../stores/useUIStore';
 import { PLATFORM_LABELS } from '../../utils/platformUtils';
 
 const AVATAR_COLORS = ['var(--primary)', 'var(--teal-deep)', '#7c4daf', '#c0392b', '#e67e22', '#16a085'];
@@ -23,6 +24,14 @@ export function MessageList() {
   const setListFilter = useInboxStore((s) => s.setListFilter);
   const setSortBy = useInboxStore((s) => s.setSortBy);
   const selectMessage = useInboxStore((s) => s.selectMessage);
+  const setInboxMobileView = useUIStore((s) => s.setInboxMobileView);
+
+  const handleSelect = (id) => {
+    selectMessage(id);
+    if (window.matchMedia('(max-width: 768px)').matches) {
+      setInboxMobileView('detail');
+    }
+  };
 
   let filtered = messages.filter((m) => {
     if (m.archived && listFilter !== 'Archived') return false;
@@ -39,25 +48,21 @@ export function MessageList() {
   const channelLabel = activeChannel === 'all' ? 'All Channels' : PLATFORM_LABELS[activeChannel] || activeChannel;
 
   return (
-    <div
-      style={{
-        width: 340,
-        borderRight: '1px solid var(--hairline)',
-        display: 'flex',
-        flexDirection: 'column',
-        background: 'var(--canvas)',
-        flexShrink: 0,
-        overflow: 'hidden',
-      }}
-    >
-      <div
-        style={{
-          padding: '14px 16px 10px',
-          borderBottom: '1px solid var(--hairline)',
-          flexShrink: 0,
-        }}
-      >
-        <h2 style={{ margin: 0, fontSize: 16, fontWeight: 600, letterSpacing: '-0.4px', color: 'var(--ink)' }}>{channelLabel}</h2>
+    <div className="inbox-list">
+      <div className="inbox-list-header">
+        <div className="inbox-list-header-row">
+          <button
+            type="button"
+            className="inbox-mobile-filter-btn"
+            onClick={() => setInboxMobileView('filters')}
+            aria-label="Filter channels"
+          >
+            ☰
+          </button>
+          <h2 style={{ margin: 0, fontSize: 16, fontWeight: 600, letterSpacing: '-0.4px', color: 'var(--ink)', flex: 1 }}>
+            {channelLabel}
+          </h2>
+        </div>
         <p style={{ margin: '0 0 10px', fontSize: 12, color: 'var(--ink-mute)' }}>{filtered.length} conversations</p>
         <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
           <select
@@ -92,8 +97,8 @@ export function MessageList() {
                 key={msg.id}
                 role="button"
                 tabIndex={0}
-                onClick={() => selectMessage(msg.id)}
-                onKeyDown={(e) => e.key === 'Enter' && selectMessage(msg.id)}
+                onClick={() => handleSelect(msg.id)}
+                onKeyDown={(e) => e.key === 'Enter' && handleSelect(msg.id)}
                 style={{
                   padding: '14px 16px',
                   borderBottom: '1px solid var(--hairline)',

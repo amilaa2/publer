@@ -43,7 +43,7 @@ export function PostsPage() {
   };
 
   return (
-    <div className="page-content" style={{ overflow: 'auto' }}>
+    <div className="page-scroll posts-page">
       <div
         style={{
           position: 'sticky',

@@ -6,18 +6,7 @@ export function PreviewPane({ caption, media, selectedPlatforms, previewPlatform
   const color = getChannelColor(platform);
 
   return (
-    <div
-      style={{
-        flex: '1 1 45%',
-        minWidth: 320,
-        background: 'var(--canvas-soft)',
-        borderLeft: '1px solid var(--hairline)',
-        padding: 24,
-        overflowY: 'auto',
-        display: 'flex',
-        flexDirection: 'column',
-      }}
-    >
+    <div className="compose-preview">
       <h2 style={{ margin: '0 0 4px', fontSize: 16, fontWeight: 700, color: 'var(--ink)' }}>Preview</h2>
       <p style={{ margin: '0 0 20px', fontSize: 12, color: 'var(--ink-mute)' }}>
         How your post will look on each platform

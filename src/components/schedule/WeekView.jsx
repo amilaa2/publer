@@ -22,7 +22,7 @@ export function WeekView({ currentDate, posts, onPostClick }) {
     });
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', height: '100%', minHeight: 600 }}>
+    <div className="week-view" style={{ display: 'flex', flexDirection: 'column', height: '100%', minHeight: 600 }}>
       <div style={{ display: 'grid', gridTemplateColumns: '50px repeat(7, 1fr)', borderBottom: '1px solid var(--hairline)', background: 'var(--canvas)' }}>
         <div />
         {days.map((day) => (

@@ -24,7 +24,7 @@ export function CompetitorsPage() {
   const highGaps = gapAnalysis.filter((g) => g.priority === 'high').length;
 
   return (
-    <div className="page-content" style={{ overflow: 'auto', padding: 32 }}>
+    <div className="page-scroll">
       <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-start', gap: 16, marginBottom: 28 }}>
         <div>
           <h1 style={{ margin: '0 0 8px', fontSize: 28, fontWeight: 600, color: 'var(--ink)' }}>Competitor Intelligence</h1>

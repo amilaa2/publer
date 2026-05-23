@@ -43,20 +43,8 @@ export function SchedulePage() {
         : format(currentDate, 'EEEE, MMM d, yyyy');
 
   return (
-    <div className="page-content" style={{ background: 'var(--canvas)' }}>
-      <div
-        style={{
-          padding: '16px 24px',
-          borderBottom: '1px solid var(--hairline)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          flexShrink: 0,
-          flexWrap: 'wrap',
-          gap: 12,
-          background: 'var(--canvas)',
-        }}
-      >
+    <div className="schedule-page">
+      <div className="schedule-toolbar">
         <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
           <button type="button" className="btn-ghost" onClick={goPrev} style={{ padding: '6px 12px' }}>
             ← Prev
@@ -111,6 +99,7 @@ export function SchedulePage() {
 
       <button
         type="button"
+        className="schedule-queue-fab"
         onClick={() => setQueueOpen(true)}
         style={{
           position: 'fixed',

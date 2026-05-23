@@ -12,17 +12,7 @@ export function ToastContainer() {
   const removeToast = useUIStore((s) => s.removeToast);
 
   return (
-    <div
-      style={{
-        position: 'fixed',
-        bottom: 24,
-        right: 24,
-        zIndex: 9999,
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 8,
-      }}
-    >
+    <div className="toast-container">
       {toasts.map((t) => {
         const v = VARIANTS[t.type] || VARIANTS.info;
         return (

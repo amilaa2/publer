@@ -28,20 +28,9 @@ export function AICaptionModal({ open, onClose, onSelect }) {
   const labelStyle = { fontSize: 14, fontWeight: 600, color: 'var(--ink)', display: 'block', marginBottom: 6 };
 
   return (
-    <div
-      style={{
-        position: 'fixed',
-        inset: 0,
-        background: 'rgba(0,0,0,0.55)',
-        zIndex: 8000,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: 24,
-      }}
-      onClick={onClose}
-    >
+    <div className="modal-overlay" onClick={onClose}>
       <div
+        className="modal-panel"
         style={{
           position: 'relative',
           background: 'var(--canvas)',
