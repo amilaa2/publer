@@ -1,0 +1,4 @@
+UnifiedInbox
+*.log
+.env
+.env.local
