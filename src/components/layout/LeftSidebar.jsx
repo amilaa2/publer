@@ -11,6 +11,8 @@ const NAV_ITEMS = [
   { id: 'schedule', label: 'Schedule', route: '/schedule' },
   { id: 'compose', label: 'New Post', route: '/compose', isCompose: true },
   { id: 'posts', label: 'Posts', route: '/posts' },
+  { id: 'competitors', label: 'Competitors', route: '/analytics/competitors' },
+  { id: 'campaigns', label: 'AI Campaigns', route: '/campaigns' },
   { id: 'analytics', label: 'Best Times', route: '/analytics/best-times' },
   { id: 'settings', label: 'Settings', route: '/settings' },
 ];

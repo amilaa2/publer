@@ -3,6 +3,8 @@ const STYLES = {
   schedule: { bg: 'rgba(255,255,255,0.15)', color: '#fff', label: 'Cal' },
   compose: { bg: '#fff', color: 'var(--teal-deep)', label: '+' },
   posts: { bg: 'rgba(255,255,255,0.15)', color: '#fff', label: 'Po' },
+  competitors: { bg: 'rgba(255,255,255,0.15)', color: '#fff', label: 'Cp' },
+  campaigns: { bg: 'rgba(20,168,158,0.35)', color: '#fff', label: 'AI' },
   analytics: { bg: 'rgba(255,255,255,0.15)', color: '#fff', label: 'An' },
   settings: { bg: 'rgba(255,255,255,0.15)', color: '#fff', label: 'Set' },
 };

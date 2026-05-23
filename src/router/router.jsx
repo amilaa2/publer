@@ -5,6 +5,8 @@ import { ComposePage } from '../pages/ComposePage';
 import { SchedulePage } from '../pages/SchedulePage';
 import { PostsPage } from '../pages/PostsPage';
 import { BestTimesPage } from '../pages/BestTimesPage';
+import { CompetitorsPage } from '../pages/CompetitorsPage';
+import { CampaignsPage } from '../pages/CampaignsPage';
 import { SettingsPage } from '../pages/SettingsPage';
 import { LoginPage } from '../pages/LoginPage';
 import { NotFoundPage } from '../pages/NotFoundPage';
@@ -21,6 +23,8 @@ export const router = createBrowserRouter([
       { path: 'schedule', element: <SchedulePage /> },
       { path: 'posts', element: <PostsPage /> },
       { path: 'analytics/best-times', element: <BestTimesPage /> },
+      { path: 'analytics/competitors', element: <CompetitorsPage /> },
+      { path: 'campaigns', element: <CampaignsPage /> },
       { path: 'settings', element: <SettingsPage /> },
     ],
   },
