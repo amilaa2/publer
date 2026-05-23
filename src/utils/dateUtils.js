@@ -12,6 +12,9 @@ import {
   isToday,
   startOfWeek,
   endOfWeek,
+  isWithinInterval,
+  startOfDay,
+  endOfDay,
 } from 'date-fns';
 
 export {
@@ -28,6 +31,9 @@ export {
   isToday,
   startOfWeek,
   endOfWeek,
+  isWithinInterval,
+  startOfDay,
+  endOfDay,
 };
 
 export function formatPostTime(iso) {

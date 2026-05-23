@@ -1,4 +1,5 @@
 @import './tokens.css';
+@import './schedule.css';
 
 @tailwind base;
 @tailwind components;
@@ -642,7 +643,7 @@ select:focus {
   align-items: start;
 }
 
-/* ── Schedule ── */
+/* ── Schedule (see schedule.css for animations) ── */
 .schedule-page {
   display: flex;
   flex-direction: column;
@@ -650,23 +651,6 @@ select:focus {
   overflow: hidden;
   background: var(--canvas);
   min-height: 0;
-}
-
-.schedule-toolbar {
-  padding: 16px 24px;
-  border-bottom: 1px solid var(--hairline);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-shrink: 0;
-  flex-wrap: wrap;
-  gap: 12px;
-  background: var(--canvas);
-}
-
-.week-view {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
 }
 
 /* ── Login ── */
@@ -922,22 +906,11 @@ select:focus {
     grid-template-columns: 1fr;
   }
 
-  .schedule-toolbar h2 {
-    font-size: 15px !important;
-    width: 100%;
-    order: -1;
-    text-align: center;
-  }
-
   .schedule-queue-fab {
     bottom: calc(72px + env(safe-area-inset-bottom, 0)) !important;
     right: 16px !important;
     font-size: 12px;
     padding: 10px 14px !important;
-  }
-
-  .week-view {
-    min-width: 640px;
   }
 
   .btn-primary,

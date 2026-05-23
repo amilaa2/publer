@@ -8,33 +8,31 @@ export function PostDetailModal({ post, onClose, onDelete }) {
 
   return (
     <div
-      style={{
-        position: 'fixed',
-        inset: 0,
-        background: 'rgba(0,0,0,0.5)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        zIndex: 8000,
-      }}
+      className="modal-overlay schedule-modal-overlay"
       onClick={onClose}
     >
       <div
-        style={{
-          background: 'var(--canvas)',
-          borderRadius: 12,
-          padding: 24,
-          maxWidth: 480,
-          width: '90%',
-          maxHeight: '80vh',
-          overflow: 'auto',
-          color: 'var(--ink)',
-        }}
+        className="modal-panel schedule-modal-panel"
+        style={{ position: 'relative', maxWidth: 480, color: 'var(--ink)' }}
         onClick={(e) => e.stopPropagation()}
       >
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
           <StatusBadge status={post.status} />
-          <button type="button" onClick={onClose} style={{ background: 'none', border: 'none', fontSize: 22, cursor: 'pointer', color: 'var(--ink-mute)' }} aria-label="Close">
+          <button
+            type="button"
+            onClick={onClose}
+            style={{
+              background: 'var(--canvas-soft)',
+              border: '1px solid var(--hairline)',
+              borderRadius: 6,
+              width: 32,
+              height: 32,
+              cursor: 'pointer',
+              color: 'var(--ink-mute)',
+              fontSize: 18,
+            }}
+            aria-label="Close"
+          >
             ×
           </button>
         </div>
@@ -55,11 +53,26 @@ export function PostDetailModal({ post, onClose, onDelete }) {
             </span>
           ))}
         </div>
-        <p style={{ fontSize: 14, lineHeight: 1.6, whiteSpace: 'pre-line', color: 'var(--ink)' }}>{post.caption}</p>
-        <p style={{ fontSize: 12, color: 'var(--ink-mute)', marginTop: 12 }}>{formatPostDate(post.scheduledAt)}</p>
-        {post.media?.[0] && <img src={post.media[0].thumbnailUrl} alt="" style={{ width: '100%', borderRadius: 8, marginTop: 16 }} />}
+        <p style={{ fontSize: 14, lineHeight: 1.6, whiteSpace: 'pre-line', color: 'var(--ink)' }}>
+          {post.caption}
+        </p>
+        <p style={{ fontSize: 12, color: 'var(--ink-mute)', marginTop: 12 }}>
+          {formatPostDate(post.scheduledAt)}
+        </p>
+        {post.media?.[0] && (
+          <img
+            src={post.media[0].thumbnailUrl}
+            alt=""
+            style={{ width: '100%', borderRadius: 8, marginTop: 16 }}
+          />
+        )}
         <div style={{ display: 'flex', gap: 8, marginTop: 20, flexWrap: 'wrap' }}>
-          <Link to={`/compose/${post.id}`} className="btn-primary" style={{ textDecoration: 'none', padding: '8px 16px', fontSize: 13 }}>
+          <Link
+            to={`/compose/${post.id}`}
+            className="btn-primary"
+            style={{ textDecoration: 'none', padding: '8px 16px', fontSize: 13 }}
+            onClick={onClose}
+          >
             Edit Post
           </Link>
           <button
