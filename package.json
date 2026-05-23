@@ -10,7 +10,7 @@
     "vercel-build": "vite build"
   },
   "engines": {
-    "node": ">=18"
+    "node": "20.x"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",
