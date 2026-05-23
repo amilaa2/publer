@@ -19,9 +19,10 @@ This project is configured for Vercel out of the box (`vercel.json` includes SPA
 
 1. Push this folder to a GitHub repository.
 2. Go to [vercel.com/new](https://vercel.com/new) and import the repo.
-3. Vercel should auto-detect **Vite** with:
-   - **Build Command:** `npm run build`
-   - **Output Directory:** `dist`
+3. Vercel should auto-detect **Vite** (or set Framework Preset to **Vite** manually):
+   - **Build Command:** `npm run build` (default)
+   - **Output Directory:** `dist` (default)
+   - **Node.js Version:** 20.x or 22.x in Project Settings (match your preference; `engines` pin removed to avoid conflicts)
 4. Add **Environment Variables** (Project → Settings → Environment Variables):
 
    | Name | Value | Environments |
