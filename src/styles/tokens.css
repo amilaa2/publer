@@ -1,0 +1,38 @@
+:root {
+  --primary: #1b1938;
+  --primary-deep: #0e0c1f;
+  --teal-brand: #14a89e;
+  --teal-light: #d4f0ee;
+  --teal-deep: #0a4a47;
+  --teal-mid: #155555;
+  --violet-soft: #c9b4fa;
+  --canvas: #ffffff;
+  --canvas-soft: #f5f4f1;
+  --ink: #1a1918;
+  --ink-mute: #5c5956;
+  --ink-faint: #7a7774;
+  --hairline: #ddd9d2;
+  --hairline-dark: #4a4560;
+  --on-dark: #f2f1f7;
+  --on-dark-mute: #d8d6e4;
+  --on-dark-faint: #9b98b0;
+  --success: #15803d;
+  --success-bg: #dcfce7;
+  --warning: #b45309;
+  --warning-bg: #fef3c7;
+  --error: #b91c1c;
+  --error-bg: #fee2e2;
+  --ch-instagram: #e1306c;
+  --ch-facebook: #1877f2;
+  --ch-twitter: #1a8cd8;
+  --ch-linkedin: #0077b5;
+  --ch-whatsapp: #25d366;
+  --ch-tiktok: #121212;
+  --ch-email: #4a90e2;
+  --shadow-1: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-2: 0 8px 24px rgba(0, 0, 0, 0.14);
+  --shadow-3: 0 16px 40px rgba(0, 0, 0, 0.2);
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+}
